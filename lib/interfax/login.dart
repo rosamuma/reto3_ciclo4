@@ -16,22 +16,31 @@ class _loginState extends State<login> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Registro / Login")
+        title: Text("Login / Registro")
       ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Column(
           children: [
+            Divider(),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Image(image: 
+                NetworkImage("https://idegrafico.com/wp-content/uploads/2017/03/Las-imagenes-raw-son-los-negativos-digitales.jpg")),
+            ),
+            Divider(),
             TextField(
               controller: em,
               decoration: InputDecoration(
-                label: Text("Email")),
+                label: Text("Email"),
+                suffixIcon: Icon(Icons.email)),
             ),
             TextField(
               obscureText: true,
               controller: pass,
               decoration: InputDecoration(
-                label: Text("Contraseña")),
+                label: Text("Password"),
+                suffixIcon: Icon(Icons.key_rounded)),
             ),
             Divider(),
             ElevatedButton.icon(
@@ -47,8 +56,8 @@ class _loginState extends State<login> {
                 autenticacion().crearUsuario(
                   usuarioEmail: em.text, passwordUser: pass.text);
               }, 
-              icon: Icon(Icons.person_add_alt), 
-              label: Text("Crear Usuario")),
+              icon: Icon(Icons.person_add_alt_rounded), 
+              label: Text("Registrar Usuario")),
           ]
         ),
       ),

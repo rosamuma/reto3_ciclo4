@@ -15,16 +15,15 @@ class _messagesState extends State<messages> {
 
   Stream<QuerySnapshot> resp_consulta = FirebaseFirestore.instance
   .collection("Chat")
-  .orderBy("Time", descending: true)
-  .snapshots();
+  .orderBy("Time", descending: true) //Organizado por tiempo
+  .snapshots(); //Estructura de un Json
 
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(  //StreamBuilder: permite adicionar un flujo(Stream, builder)
       stream: resp_consulta,
-      builder: 
-          (context, AsyncSnapshot<QuerySnapshot> respuesta){
-        return respuesta.data?.docs.isEmpty == false 
+      builder: (context, AsyncSnapshot<QuerySnapshot> respuesta){ 
+        return respuesta.data?.docs.isEmpty == false //Respuesta: Cantidad de Items
         ? ListView.builder(
             itemCount: respuesta.data!.docs.length,
             itemBuilder: (BuildContext context, int index) {
@@ -36,10 +35,10 @@ class _messagesState extends State<messages> {
                 child: ListTile(
                   title: Text(
                     respuesta.data!.docs[index].get("Mensaje"),
-                    textAlign: (autenticacion().usuario?.email).toString() == 
-                        respuesta.data!.docs[index].get("Email").toString()
-                      ? TextAlign.right
-                      : TextAlign.left
+                    textAlign: (autenticacion().usuario?.email).toString() == //Si Email autenticado
+                        respuesta.data!.docs[index].get("Email").toString() //Es igual al de la BD
+                      ? TextAlign.right //Alinee Derecha
+                      : TextAlign.left //Alinee Izquierda
                   ),            
                   subtitle: Text(
                     respuesta.data!.docs[index].get("Email"),

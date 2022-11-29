@@ -11,7 +11,7 @@ class chat extends StatefulWidget {
   State<chat> createState() => _chatState();
 }
 
-final mensaje = TextEditingController();
+final mensaje = TextEditingController(); //controlador
 final fire = FirebaseFirestore.instance;
 
 class _chatState extends State<chat> {
@@ -21,7 +21,16 @@ final FocusNode varFocus = FocusNode();
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text((autenticacion().usuario?.email).toString())
+        title: Row(children: [
+          Text((autenticacion().usuario?.email).toString()),
+          VerticalDivider(),
+          VerticalDivider(),
+          VerticalDivider(),
+          IconButton(onPressed: () {
+            autenticacion().cerrarSesion();
+          }, 
+          icon: Icon(Icons.login_outlined))
+        ],)
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -29,12 +38,12 @@ final FocusNode varFocus = FocusNode();
             children: [
               Row(
                 children: [
-                  Expanded(
+                  Expanded(  //Expanded: para que no se destruya la pantalla
                     child: TextField(
                       controller: mensaje,
                       focusNode: varFocus,
                       decoration: InputDecoration(
-                        hintText: "Mensaje Chat",
+                        hintText: "Escribir Mensaje...", //Mensaje Transparente antes de la transcripcion
                       ),
                       onSubmitted: (valor){
                         if (mensaje.text.isNotEmpty) {
@@ -53,9 +62,9 @@ final FocusNode varFocus = FocusNode();
                   ),
                   IconButton(
                     onPressed: (){
-                      if (mensaje.text.isNotEmpty) {
+                      if (mensaje.text.isNotEmpty) { //si mensaje no es vacio
                         varFocus.requestFocus();
-                        fire.collection("Chat").doc().set(
+                        fire.collection("Chat").doc().set( //creación de documentos de coleccion
                           {
                           "Mensaje": mensaje.text,
                           "Time": DateTime.now(),
@@ -65,12 +74,12 @@ final FocusNode varFocus = FocusNode();
                       mensaje.clear();
                       }
                     }, 
-                  icon: Icon(Icons.send)
+                    icon: Icon(Icons.send)
                   )
                 ],
               ),
               Container(
-                child: Expanded(child: messages()),
+                child: Expanded(child: messages()), //llamo e imprimo mensajes
               )
             ],
           ),
