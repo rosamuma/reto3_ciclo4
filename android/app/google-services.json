@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "361987418804",
+    "project_id": "reto3-rosa",
+    "storage_bucket": "reto3-rosa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:361987418804:android:22ead99a5b40c9f93bc5e1",
+        "android_client_info": {
+          "package_name": "com.example.reto3_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "361987418804-0p3m0pmi75pqiu5h1f9h98s7ajhltlj3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4rnK3FpH-Ph2aTDMRqa64HbUxunuzb9s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "361987418804-0p3m0pmi75pqiu5h1f9h98s7ajhltlj3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
